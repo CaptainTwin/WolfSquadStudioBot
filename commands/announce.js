@@ -4,7 +4,7 @@ const errors = require("../utils/errors.js");
 module.exports.run = async (bot,message, args) => {
     message.delete();
     if(!message.member.roles.some(r=>["YouTuber", "Admin", "Moderator", "Developer", "Designer", "Owner"].includes(r.name)))
-    return errors.noRoles(message, "YouTuber", "Admin", "Moderator", "Developer", "Designer");
+    return errors.noRoles(message.channel);
     if(args[0] == "help"){
       message.reply("Usage: >announce <what to announce>");
       return;

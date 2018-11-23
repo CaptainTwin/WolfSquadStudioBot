@@ -8,7 +8,7 @@ module.exports.noPerms = (message, perm) => {
         .setColor("#b70000")
         .addField("Permission needed", perm);
 
-    message.channel.send(embed).then(m => m.delete(5000));
+    message.channel.send(embed).then(m => m.delete(50000));
 }
 
 module.exports.equalPerms = (message, user, perms) => {
@@ -19,7 +19,7 @@ module.exports.equalPerms = (message, user, perms) => {
           .setTitle("Error")
           .addField(`${user} has perms`, perms);
 
-    message.channel.send(embed).then(m => m.delete(5000));
+    message.channel.send(embed).then(m => m.delete(50000));
 
 }
 
@@ -29,33 +29,32 @@ module.exports.botuser = (message) => {
         .setDescription("You cannot ban a bot.")
         .setColor("#b70000");
 
-    message.channel.send(embed).then(m => m.delete(5000));
+    message.channel.send(embed).then(m => m.delete(50000));
 }
 
-module.exports.cantfindUser = (channel) => {
+module.exports.cantfindUser = (message, channel) => {
     let embed = new Discord.RichEmbed()
     .setTitle("Error")
-    .setDescription("You cannot ban a bot")
+    .setDescription("Can't find user")
     .setColor("#b70000");
-  
-  channel.send(embed).then(m => m.delete(5000));
+
+  message.channel.send(embed).then(m => m.delete(50000));
 }
 
-  module.exports.noReason = (channel) => {
+  module.exports.noReason = (message, channel) => {
     let embed = new Discord.RichEmbed()
         .setTitle("Error")
         .setDescription("Please supply a reason.")
         .setColor("#b70000");
 
-    channel.send(embed).then(m => m.delete({timeout: 5000}));
+    message.channel.send(embed).then(m => m.delete({timeout: 50000}));
     }
   
-  module.exports.noRoles = (message, roles) => {
+    module.exports.noRoles = (message, channel, roles) => {
     let embed = new Discord.RichEmbed()
-        .setAuthor(message.author.username)
-        .setDescription("You don't have roles to use this command!")
-        .setColor("#b70000")
-        .addField("Role Needed", roles);
-
-    message.channel.send(embed).then(m => m.delete(5000));
-}
+        .setTitle("Error")
+        .setDescription("You do not have the required roles.")
+        .setColor("#b70000");
+      
+    message.channel.send(embed).then(m => m.delete({timeout: 50000}));
+    }

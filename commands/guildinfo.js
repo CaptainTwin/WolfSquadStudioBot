@@ -6,7 +6,6 @@ const ms = require("ms");
 
 module.exports.run = async (bot,message, args) => {
   let verificationLevel = message.guild.verificationLevel;
-  if(verificationLevel === 2) verificationLevel = "Medium";
         let textchannel = message.guild.channels.filter(c => c.type === "text").size;
         let voicechannel = message.guild.channels.filter(c => c.type === "voice").size;
         let bots = message.guild.members.filter(m => m.user.bot).size;

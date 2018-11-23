@@ -1,8 +1,9 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message, args) => {
   message.delete();
-    if(message.author.id !== '372995308814073856') return;
+    if(message.author.id !== '372995308814073856') return errors.noPerms(message.channel);
     function clean(text) {
       if (typeof(text) === "string")
         return text.replace(/'/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));

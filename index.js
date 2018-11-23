@@ -60,8 +60,8 @@ bot.on("ready", async () => {
 bot.on("guildCreate", guild =>{
   bot.guilds.map(g => g.owner.username + guild.name);
   let owner = guild.owner;
-  owner.send("Thanks for using my bot. This bot has to have administrator permission and some channels called logs, incidents, ideas, reports and announcements. If you have any questions you can contact me using discord: Cassieboy2001#8330");
-    console.log(`New guild added : ${guild.name}, owned by ${guild.owner.user.username}`);
+  owner.send("Thanks for using my bot. This bot has to have administrator permission and some channels called logs, incidents, ideas, reports ,announcements and videos-and-livestreams. If you have any questions you can contact me using discord: Cassieboy2001#8330");
+    console.log(`New guild added : ${guild.name}, owned by ${guild.owner.user.username}.`);
 });
 
 bot.on("guildDelete", guild => {
@@ -237,4 +237,4 @@ bot.on("message", async message => {
   
 });
 
-bot.login(botconfig.token);
+bot.login(process.env.TOKEN);

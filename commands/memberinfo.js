@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   dnd: 'Do Not Disturb',
   offline: 'Offline/Invisible'
 };
-let member = message.guild.member(message.mentions.users.first())
+let member = message.guild.member(message.mentions.users.first()) || message.member;
     if(!member.user) return message.channel.send("Couldn't find that user.");
     if(member.roles.size !=0);
     let icon = member.user.displayAvatarURL;

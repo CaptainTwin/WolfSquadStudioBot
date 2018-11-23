@@ -1,11 +1,12 @@
 const botconfig = require("../botconfig.json");
 const Discord   = require("discord.js");
+const errors = require("../utils/errors.js");
 let prefix      = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
 message.delete();
   let videoURL = args.join(" ");
-  let vidannounce = message.guild.channels.find(`name`, "ytvideos");
+  let vidannounce = message.guild.channels.find(`name`, "videos-and-livestreams");
   let role = message.guild.roles.find(`name`, "YouTuber");
 
   if(message.member.roles.has(role.id)){
@@ -19,6 +20,8 @@ message.delete();
         
     let everyone = message.guild.roles.find('name', "@everyone");
     vidannounce.send(`${everyone}`, videoembed);
+  }else{
+    return errors.noRoles(message, "No_ROLES");
   }
   return;
 };

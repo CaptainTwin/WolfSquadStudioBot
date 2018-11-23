@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-let member = message.mentions.users.first();
+let member = message.mentions.users.first() || message.member;
 if(!member) return message.reply("Choose a member to throw a snowball to!");
 let snowballembed = new Discord.RichEmbed()
 .setTitle("Snowballed")

@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, func) => {
       return;
     }
 
-    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let tomute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
     if(!tomute) return message.reply("Couldn't find user!");
     if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute this person.");
     let reason = args.slice(2).join(" ");

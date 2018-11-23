@@ -18,6 +18,9 @@ module.exports.run = async (bot, message, args) => {
         .setColor(0xCB5A5E)
         .addField(`${message.guild.name} banned users!`, `\`\`\`${possiblebans.join('\n')}\`\`\``)
         .setTimestamp();
+  
+  let bansize = await message.guild.fetchBans().then(
+bans => embed.setFooter(`${message.guild.name} has currently ${bans.size} banned users!`));
   message.channel.send(embed);
 }
 

@@ -11,8 +11,8 @@ module.exports.run = async (bot, message, args) => {
   message.delete();
   let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
   if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("You can't do that.");
-  let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-  if(!wUser) return message.reply("Couldn't find them yo");
+  let wUser = message.guild.member(message.mentions.users.first()) || message.member;
+  if(!wUser) return message.reply("Use a member!");
   if(!warns[wUser.user.username, message.guild.name]){
       warns[wUser.user.username, message.guild.name] = {
           warns: 0

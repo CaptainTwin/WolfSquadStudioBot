@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
             level: 0
         };
     }
-    let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let member = message.guild.member(message.mentions.users.first())  || message.member;
     let curxp = xp[message.author.id, message.guild.id].xp;
     let curlvl = xp[message.author.id, message.guild.id].level;
     let nxtlvlXp = curlvl * 125;

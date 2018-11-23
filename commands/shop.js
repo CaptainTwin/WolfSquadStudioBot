@@ -88,7 +88,7 @@ module.exports.run = async (bot, message, args) => { // Run the command when a c
         message.channel.send(store3Embed)
         })
  } else {return message.channel.send(`Please choose from \`page 1 - page 2 - page 3\``)}}*/
-  message.channel.send(`Is working on it`)
+  message.channel.send(`Developer is working on it`)
 }
 
 module.exports.help = {

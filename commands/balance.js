@@ -4,7 +4,7 @@ const db = require('quick.db');
 const ms = require('parse-ms');
 
 module.exports.run = async (bot, message, args) => {
-  let member = message.mentions.users.first();
+  let member = message.mentions.users.first() || message.member;
   var balance = await db.fetch(`account_${message.member.id + message.guild.id}`);
   let micon = message.guild.iconURL;
   if(balance === null) balance = 50;
