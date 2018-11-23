@@ -1,0 +1,29 @@
+{
+  "name": "wolfsquadstudiobot",
+  "version": "1.0.0",
+  "description": "This is the official WolfSquadStudiobot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.11.1"
+  },
+  "author": "Cas Martens",
+  "license": "ISC",
+  "dependencies": {
+    "currency-formatter": "^1.4.3",
+    "discord.js": "^11.3.2",
+    "fs": "0.0.2",
+    "gif-search": "^2.0.1",
+    "humanize-duration": "^3.15.1",
+    "moment": "^2.22.2",
+    "moment-duration-format": "^2.2.2",
+    "ms": "^2.1.1",
+    "parse-ms": "^2.0.0",
+    "quick.db": "^6.3.2",
+    "snekfetch": "^4.0.4",
+    "string-similarity": "^1.2.0"
+  }
+}

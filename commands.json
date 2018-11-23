@@ -1,0 +1,134 @@
+{
+    "Help": {
+        "name": "Help",
+        "group": "User",
+        "desc": "Displays a list of commands",
+        "usage": "help [group OR command]"
+    },
+
+    "8ball": {
+        "name": "8ball",
+        "group": "Fun",
+        "desc": "returns a ranodm answer on a question",
+        "usage": ">8ball [question here]"
+    },
+
+    "addrole": {
+        "name": "addrole",
+        "group": "Moderator",
+        "desc": "Adds a role to a user.",
+        "usage": ">addrole @user [role here]"
+    },
+
+    "announce": {
+        "name": "announce",
+        "group": "Moderator/Youtubers",
+        "desc": "Makes an announcement",
+        "usage": ">announce [message here]"
+    },
+
+    "ban": {
+        "name": "ban",
+        "group": "Moderator",
+        "desc": "Bans a user",
+        "usage": ">ban @user [reason here]"
+    },
+
+    "botinfo": {
+        "name": "botinfo",
+        "group": "User",
+        "desc": "Displays the info of the bot",
+        "usage": ">botinfo"
+    },
+
+    "clear": {
+        "name": "clear",
+        "group": "Moderator",
+        "desc": "Clears the messages",
+        "usage": ">clear [amount of messages here]"
+    },
+  
+    "guildinfo": {
+        "name": "guildinfo",
+        "group": "User",
+        "desc": "Displays the guilds info",
+        "usage": ">guildinfo"
+    },
+
+    "kick": {
+        "name": "kick",
+        "group": "Moderator",
+        "desc": "Kicks the user",
+        "usage": ">kick @user [reason]"
+    },
+
+    "level": {
+        "name": "level",
+        "group": "Fun",
+        "desc": "Displays the level you are",
+        "usage": ">level"
+    },
+
+    "memberinfo": {
+        "name": "memberinfo",
+        "group": "User",
+        "desc": "Displays the info of the member",
+        "usage": ">memberinfo @user"
+    },
+
+    "pay": {
+        "name": "pay",
+        "group": "Fun",
+        "desc": "Pays the other user coins",
+        "usage": ">pay @user [amount of money you need to pay]"
+    },
+
+    "prefix": {
+        "name": "prefix",
+        "group": "Moderator",
+        "desc": "Changes the current prefix",
+        "usage": ">prefix [new prefix here]"
+    },
+
+    "removerole": {
+        "name": "removerole",
+        "group": "Moderator",
+        "desc": "Removes a role of the user",
+        "usage": ">removerole @user [role here]"
+    },
+    
+    "report": {
+        "name": "report",
+        "group": "Moderator",
+        "desc": "Reports a user",
+        "usage": ">report @user [reason here]"
+    },
+
+    "say": {
+        "name": "say",
+        "group": "Moderator",
+        "desc": "Says the message of the user",
+        "usage": ">say [message here]"
+    },
+
+    "tempmute": {
+        "name": "tempmute",
+        "group": "Moderator",
+        "desc": "Mutes a user temporarily",
+        "usage": ">tempmute @user [reason]"
+    },
+
+    "warn": {
+        "name": "warn",
+        "group": "Moderator",
+        "desc": "Warns a user",
+        "usage": ">warn @user [reason here]"
+    },
+
+    "warnlevel": {
+        "name": "warnlevel",
+        "group": "Moderator",
+        "desc": "Shows the amount of warns from a user",
+        "usage": ">warnlevel @user"
+    }
+}
