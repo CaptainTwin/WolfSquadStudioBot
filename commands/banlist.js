@@ -16,11 +16,11 @@ module.exports.run = async (bot, message, args) => {
     const embed = new Discord.RichEmbed()
         .setTitle(`**BANS**`)
         .setColor(0xCB5A5E)
-        .addField(`${message.guild.name} banned users!`, `\`\`\`${possiblebans.join('\n')}\`\`\``)
+        .addField(`\`\`\`${message.guild.name}'s banned users!\`\`\``, `\`\`\`${possiblebans.join('\n')}\`\`\``)
         .setTimestamp();
   
   let bansize = await message.guild.fetchBans().then(
-bans => embed.setFooter(`${message.guild.name} has currently ${bans.size} banned users!`));
+bans => embed.setFooter(`${message.guild.name} currently has ${bans.size} banned users!`));
   message.channel.send(embed);
 }
 

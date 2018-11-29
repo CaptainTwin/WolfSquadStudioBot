@@ -12,21 +12,19 @@ module.exports.run = async (bot,message, args) => {
     //>announce [message here]
   message.delete();
     if(message.member.roles.some(r=>["YouTuber", "Admin", "Moderator", "Developer", "Designer", "Owner"].includes(r.name))) {
-        let announceembed = new Discord.RichEmbed()
-        .setTitle("Announcement")
+        /*let announceembed = new Discord.RichEmbed()
+        .setTitle(`Announcement made by ${message.author.username}.`)
         .setDescription(args.join(" "))
         .setColor("#ff6a00")
-        .setFooter(`Announced By ${message.author.username}`)
-        .setTimestamp()
+        .setFooter(`${message.guild.name}`, `${message.guild.iconURL}`)
+        .setTimestamp()*/
 
         let split = args.slice(1);
         let url = args[2]
 
-
-        let everyone = message.guild.roles.find('name', "@everyone");
         let announceChannel = message.guild.channels.find(`name`, "announcements");
         if(!announceChannel) return message.channel.send("Couldn't find announce channel.");
-        announceChannel.send(`${everyone}`, announceembed);
+        announceChannel.send("@everyone", message.author.displayAvatarURL, args.join(" "));
     }
 }; 
  

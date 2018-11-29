@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
     let ballembed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
     .setColor("#1631fc")
-    .addField("Asked By", `${message.author.displayName}`)
+    .addField("Asked By", `${message.author.username}`)
     .addField("Question", question)
     .addField("Answer", replies[result])
     .setTimestamp();

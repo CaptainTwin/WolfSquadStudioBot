@@ -231,10 +231,8 @@ bot.on("message", async message => {
   } catch (e) {
     console.log(e.message);
   } finally {
-    console.log(`${message.author.tag} has run the command ${cmd}`);
-  
+    console.log(`${message.author.tag} has run the command ${cmd}`);  
   }
-  
 });
 
 bot.login(process.env.TOKEN);

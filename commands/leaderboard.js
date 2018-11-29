@@ -1,27 +1,25 @@
 const Discord   = require("discord.js");
-const xplvl   = require("../xp.json");
+let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
-  
-    let xplevel        = xplvl[message.author.id, message.guild.id];
-    let leaderboard = Object.keys(xplevel).map(function(ID) {
-        return {ID: user[ID], xp: xplevel[ID].xp, lvl: xplevel[ID].lvl}
+    let data        = xp[message.guild.id, message.author.id].GuildMembers;
+    let leaderboard = Object.keys(data).map(function(UserID) {
+        return {ID: UserID, xp: data[UserID].xp, lvl: data[UserID].lvl}
     });
 
-    console.log(leaderboard)
     let lbEmbed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("#ff6a00")
     .setAuthor(`~ Leaderboard`, bot.user.displayAvatarURL)
     .setDescription(`Level leaderboard for **${message.guild.name}**.`);
 
     leaderboard = leaderboard.sort((a, b) => b.xp - a.xp).slice(0, 11);
-    leaderboard.forEach((xplevel, i) => {
-        if (xplevel.ID !== "xp", "level") {
-            let usr = message.guild.members.find(`id`, xplevel.ID);
+    leaderboard.forEach((data, i) => {
+        if (data.ID !== "GuildMembers") {
+            let usr = message.guild.members.find(`id`, data.ID);
             if (!usr) usr = "User Not Found";
             else usr = usr.user.tag;
 
-            lbEmbed.addField(`**#${i}** ~ ${usr}`, `**XP** ${xplevel.xp} **LVL** ${xplevel.lvl}`);
+            lbEmbed.addField(`**#${i}** ~ ${usr}`, `**XP** ${data.xp} **LVL** ${data.lvl}`);
         }
     });
 

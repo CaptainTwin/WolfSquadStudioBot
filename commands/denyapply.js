@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args) => {
         return;
     }
   let aUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[1]);
-    if (!aUser) return errors.cantfindUser(message.channel);
-  if(message.author.id !== "372995308814073856") return message.channel.send({embed: { description: `You can't use this command ${message.author}`}});
+    if (!aUser) return errors.cantfindUser(message, "COULD_NOT_FIND_USER");
+  if(message.author.id !== "372995308814073856") return message.channel.send({embed: { description: `You can't use this command ${message.author.username}`}});
   
   let comments = args.join(" ").slice(23);;
   let acceptembed = new Discord.RichEmbed()
