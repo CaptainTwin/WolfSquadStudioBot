@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     //Defining all things:
     let auser = message.author.username || message.author.id;
     let role = args[1];
-    let roles = []
+    let roles = message.guild.roles.find(`name`, role);
     let answer = args.join(" ").slice(23);
     
     
@@ -19,12 +19,12 @@ module.exports.run = async (bot, message, args) => {
     //I want to make the reply from the user here
   
     //Checking if role is chosen:
-    if(answer !== message.guild.roles.find(`name`, role) || role) return message.channel.send(`Please choose a role!`)
+    if(answer != message.guild.roles.find(`name`, roles)) return message.channel.send("Please choose a role!");
     /*else(
         message.channel.send(`Why do you wan\'t to become a ${role}?`)
     ).then(message.channel.send("Why do you think we should be giving you the role?"));*/
   
-    if(answer === roles) message.channel.send(`Why do you want to become a ${role.name}?`)
+    if(answer === message.guild.roles.find(`name`, role)) message.channel.send(`Why do you want to become a ${role.name}?`)
 
     //checking the answer lenghts:
     if(answer <= 50) return message.channel.send(`Sorry your application has been denied. Please be more specific.`);

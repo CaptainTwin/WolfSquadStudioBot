@@ -2,9 +2,10 @@ const Discord   = require("discord.js");
 let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
+  let GuildMembers = message.guild.fetchMembers('hydrabolt', 100);
     let data        = xp[message.guild.id, message.author.id].GuildMembers;
     let leaderboard = Object.keys(data).map(function(UserID) {
-        return {ID: UserID, xp: data[UserID].xp, lvl: data[UserID].lvl}
+        return {id: UserID, xp: data[UserID].xp, lvl: data[UserID].lvl}
     });
 
     let lbEmbed = new Discord.RichEmbed()
@@ -14,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
 
     leaderboard = leaderboard.sort((a, b) => b.xp - a.xp).slice(0, 11);
     leaderboard.forEach((data, i) => {
-        if (data.ID !== "GuildMembers") {
-            let usr = message.guild.members.find(`id`, data.ID);
+        if (data.id !== "GuildMembers") {
+            let usr = message.guild.members.find(`id`, data.id);
             if (!usr) usr = "User Not Found";
             else usr = usr.user.tag;
 

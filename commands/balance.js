@@ -1,21 +1,27 @@
 const Discord = require('discord.js');
-const currencyFormatter = require('currency-formatter');
-const db = require('quick.db');
 const ms = require('parse-ms');
+let coins = require("../storage/coins.json");
+const fs = require("fs");
 
 module.exports.run = async (bot, message, args) => {
-  let member = message.mentions.users.first() || message.member;
-  var balance = await db.fetch(`account_${message.member.id + message.guild.id}`);
-  let micon = message.guild.iconURL;
-  if(balance === null) balance = 50;
-  let balembed = new Discord.RichEmbed()
-  .setTitle("Balance")
-  .setDescription(`${message.guild.name} bank.`)
-  .setColor("#bf9b30")
-  .setThumbnail('https://vignette.wikia.nocookie.net/retributionsblade/images/0/02/Bag_of_Coins.png/revision/latest?cb=20111024180128')
-  .addField("Account Holder", `${message.author.username}`, true)
-  .addField("Account Balance", `${currencyFormatter.format(balance, { code: 'USD' })}`, true);
-  message.channel.send(balembed);
+  
+  //>coins
+  
+  if(!coins[message.author.id + message.guild.id]){
+    coins[message.author.id + message.guild.id] = {
+      coins: 0,
+    }
+  };
+  
+  let uCoins = coins[message.author.id + message.guild.id].coins;
+  
+  let coinembed = new Discord.RichEmbed()
+  .setTitle(`**BALANCE**`)
+  .setDescription(`Balance of ${message.author.username} in the server ${message.guild.name}`)
+  .setColor("#DAA520")
+  .addField("Coins", uCoins, true);
+  
+  message.channel.send(coinembed);
 }
   
 module.exports.help = {

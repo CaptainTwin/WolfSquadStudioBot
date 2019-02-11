@@ -21,6 +21,7 @@ bot.commands = new Discord.Collection();
 let xp = require("./xp.json");
 let orange = botconfig.orange;
 let prefix = botconfig.prefix;
+let coins = require("./storage/coins.json");
 
   fs.readdir("./commands/", (err, files) => {
       if(err) console.log(err);
@@ -189,6 +190,33 @@ bot.on("message", async message => {
     if(message.channel.type === "dm") return;
   
     if (message.content.indexOf(botconfig.prefix) !== 0) return;
+  
+//coins
+  
+  if(!coins[message.author.id + message.guild.id]){
+    coins[message.author.id + message.guild.id] = {
+      coins: 0
+    };
+  }
+
+  let coinAmount = Math.floor(Math.random() * 15) + 1;
+  let baseAmount = Math.floor(Math.random() * 15) + 1;
+  console.log(`${coinAmount} ; ${baseAmount}`);
+
+  if(coinAmount === baseAmount){
+    coins[message.author.id + message.guild.id] = {
+      coins: coins[message.author.id + message.guild.id].coins + coinAmount,
+    };
+  fs.writeFile("./storage/coins.json", JSON.stringify(coins), (err) => {
+    if (err) console.log(err)
+  });
+  let coinEmbed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#0000FF")
+  .addField("💸", `${coinAmount} coins added!`);
+
+  message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
+  }
 
 //xp
 
