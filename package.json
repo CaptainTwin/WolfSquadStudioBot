@@ -1,7 +1,7 @@
 {
   "name": "wolfsquadstudiobot",
   "version": "1.0.0",
-  "description": "This is the official WolfSquadStudiobot",
+  "description": "This is the official WolfSquadStudiobot! Made by Cassieboy2001#8330",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,17 +13,19 @@
   "author": "Cas Martens",
   "license": "ISC",
   "dependencies": {
-    "currency-formatter": "^1.4.3",
-    "discord.js": "^11.3.2",
+    "currency-formatter": "^1.5.3",
+    "discord.js": "^11.4.2",
     "fs": "0.0.2",
     "gif-search": "^2.0.1",
-    "humanize-duration": "^3.15.1",
-    "moment": "^2.22.2",
+    "humanize-duration": "^3.17.0",
+    "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
     "ms": "^2.1.1",
     "parse-ms": "^2.0.0",
     "quick.db": "^6.3.2",
     "snekfetch": "^4.0.4",
-    "string-similarity": "^1.2.0"
+    "string-similarity": "^3.0.0",
+    "mongoose": "^5.4.13",
+    "quick.hook": "^1.5.1"
   }
 }

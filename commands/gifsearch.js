@@ -25,7 +25,7 @@ module.exports.run = (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "gifsearch",
+  name: "gif",
   category: "Fun",
   description: "Gives you a meme based on what you searced for.",
   usage: ">gifsearch [word here]"

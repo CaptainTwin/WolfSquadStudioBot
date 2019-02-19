@@ -5,15 +5,15 @@ let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
   message.delete();
-    if(!xp[message.author.id, message.guild.id]){
-        xp[message.author.id, message.guild.id] = {
+    if(!xp[message.author.id]){
+        xp[message.author.id] = {
             xp: 0,
             level: 0
         };
     }
     let member = message.guild.member(message.mentions.users.first())  || message.member;
-    let curxp = xp[message.author.id, message.guild.id].xp;
-    let curlvl = xp[message.author.id, message.guild.id].level;
+    let curxp = xp[message.author.id].xp;
+    let curlvl = xp[message.author.id].level;
     let nxtlvlXp = curlvl * 125;
     let difference = nxtlvlXp - curxp; 
 

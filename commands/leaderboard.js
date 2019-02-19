@@ -2,10 +2,9 @@ const Discord   = require("discord.js");
 let xp = require("../xp.json");
 
 module.exports.run = async (bot, message, args) => {
-  let GuildMembers = message.guild.fetchMembers('hydrabolt', 100);
-    let data        = xp[message.guild.id, message.author.id].GuildMembers;
+    let data        = xp;
     let leaderboard = Object.keys(data).map(function(UserID) {
-        return {id: UserID, xp: data[UserID].xp, lvl: data[UserID].lvl}
+        return {id: UserID, xp: data[UserID].xp, lvl: data[UserID].level};
     });
 
     let lbEmbed = new Discord.RichEmbed()
@@ -13,18 +12,20 @@ module.exports.run = async (bot, message, args) => {
     .setAuthor(`~ Leaderboard`, bot.user.displayAvatarURL)
     .setDescription(`Level leaderboard for **${message.guild.name}**.`);
 
-    leaderboard = leaderboard.sort((a, b) => b.xp - a.xp).slice(0, 11);
+    leaderboard = leaderboard.sort((a, b) => b.xp - a.xp).slice(0, 10);
     leaderboard.forEach((data, i) => {
-        if (data.id !== "GuildMembers") {
-            let usr = message.guild.members.find(`id`, data.id);
-            if (!usr) usr = "User Not Found";
-            else usr = usr.user.tag;
+      let usr = message.guild.member(data.id);
 
-            lbEmbed.addField(`**#${i}** ~ ${usr}`, `**XP** ${data.xp} **LVL** ${data.lvl}`);
-        }
+      console.log(usr);
+      console.log(data);
+
+      if (!usr) return; // usr = "User Left";
+      else usr = usr.user.tag;
+
+      lbEmbed.addField(`**#${i+1}** - ${usr}`, `**XP** ${data.xp} **LVL** ${data.lvl}`);
     });
 
-    message.delete().catch(O_o=>{});
+    message.delete().catch(o=>o);
     return message.channel.send(lbEmbed);
 }
 

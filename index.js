@@ -43,7 +43,7 @@ let coins = require("./storage/coins.json");
 //bot playing with wolves
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is running and connected to Discord! ${bot.user.username} should run without any errors.`);
-    bot.user.setActivity("Prefix: >", {type: "PLAYING"});
+    bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
     bot.user.setStatus("Online");
   
   var files = ['index.js'];
@@ -61,8 +61,17 @@ bot.on("ready", async () => {
 bot.on("guildCreate", guild =>{
   bot.guilds.map(g => g.owner.username + guild.name);
   let owner = guild.owner;
-  owner.send("Thanks for using my bot. This bot has to have administrator permission and some channels called logs, incidents, ideas, reports ,announcements and videos-and-livestreams. If you have any questions you can contact me using discord: Cassieboy2001#8330");
+  owner.send("Thanks for using my bot. This bot has to have administrator permission and some channels called logs, incidents, ideas, reports ,announcements. If you have any questions you can contact me using discord: Cassieboy2001#8330");
     console.log(`New guild added : ${guild.name}, owned by ${guild.owner.user.username}.`);
+  
+    let guildCreate = new Discord.RichEmbed()
+    .setColor(`#08ff00`)
+    .setTitle(`${guild.name}`)
+    .addField(`**Owner Name**`, guild.owner.user.tag)
+    .addField(`**Guild Owner ID**`, guild.owner.id)
+    .addField(`**Guild ID**`, guild.id);
+    
+    bot.users.get("372995308814073856").send(guildCreate)
 });
 
 bot.on("guildDelete", guild => {
@@ -201,7 +210,6 @@ bot.on("message", async message => {
 
   let coinAmount = Math.floor(Math.random() * 15) + 1;
   let baseAmount = Math.floor(Math.random() * 15) + 1;
-  console.log(`${coinAmount} ; ${baseAmount}`);
 
   if(coinAmount === baseAmount){
     coins[message.author.id + message.guild.id] = {
@@ -221,21 +229,20 @@ bot.on("message", async message => {
 //xp
 
     let xpAdd = Math.floor(Math.random() * 7) + 8;
-    console.log(xpAdd);
 
-    if(!xp[message.author.id, message.guild.id]){
-        xp[message.author.id, message.guild.id] = {
+    if(!xp[message.author.id]){
+        xp[message.author.id] = {
             xp: 0,
             level: 0
         };
     }
 
-    let curxp = xp[message.author.id, message.guild.id].xp;
-    let curlvl = xp[message.author.id, message.guild.id].level
-    let nxtlvl = xp[message.author.id, message.guild.id].level * 100;
-    xp[message.author.id, message.guild.id].xp = curxp + xpAdd;
-    if(nxtlvl <= xp[message.author.id, message.guild.id].xp){
-        xp[message.author.id, message.guild.id].level = curlvl + 1;
+    let curxp = xp[message.author.id].xp;
+    let curlvl = xp[message.author.id].level
+    let nxtlvl = xp[message.author.id].level * 100;
+    xp[message.author.id].xp = curxp + xpAdd;
+    if(nxtlvl <= xp[message.author.id].xp){
+        xp[message.author.id].level = curlvl + 1;
         let lvlupembed = new Discord.RichEmbed()
         .setTitle("Level Up!")
         .setColor(orange)
