@@ -1,3 +1,5 @@
+# OUTDATED SOURCE CODE
+
 # WolfSquadStudioBot
 Hello this is my first Discord bot.
 Updates are coming because it is not yet finished.
